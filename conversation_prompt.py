@@ -92,7 +92,10 @@ def main_loop(conversation, workspace_id):
     # let's do an infinite loop
     while True:
         # gets some input from the prompt
-        input_content = input('You> ')
+        if sys.version_info[0] < 3:
+            input_content = raw_input('You> ')
+        else:
+            input_content = input('You> ')
 
         # if you type one of those words, it will exit the while loop
         if (input_content.lower() in {'exit', 'quit', 'q', 'n'}):
